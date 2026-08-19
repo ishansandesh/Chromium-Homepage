@@ -1,0 +1,689 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+
+/* =====================================================
+   VARIABLES
+   ===================================================== */
+
+:root {
+
+  --background: #1e1e2e;
+
+  --surface: rgba(24, 24, 37, 0.72);
+
+  --surface-hover: rgba(137, 180, 250, 0.08);
+
+  --text: #cdd6f4;
+
+  --muted: #7f849c;
+
+  --accent: #89b4fa;
+
+  --border: rgba(205, 214, 244, 0.10);
+
+}
+
+
+/* =====================================================
+   RESET
+   ===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+
+  margin: 0;
+
+  padding: 0;
+
+  width: 100%;
+
+  min-height: 100%;
+
+}
+
+
+/* =====================================================
+   BODY
+   ===================================================== */
+
+body {
+
+  min-height: 100vh;
+
+  background: var(--background);
+
+  color: var(--text);
+
+  font-family:
+    "JetBrains Mono",
+    monospace;
+
+  overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   LIVE WALLPAPER
+   ===================================================== */
+
+.wallpaper {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: -3;
+
+}
+
+
+/* =====================================================
+   WALLPAPER OVERLAY
+   ===================================================== */
+
+.wallpaper-overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -2;
+
+  background:
+
+    linear-gradient(
+      rgba(15, 15, 25, 0.66),
+      rgba(15, 15, 25, 0.82)
+    );
+
+}
+
+
+/* =====================================================
+   SUBTLE GRID
+   ===================================================== */
+
+body::after {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  background-image:
+
+    linear-gradient(
+      rgba(205, 214, 244, 0.018) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(205, 214, 244, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size: 40px 40px;
+
+}
+
+
+/* =====================================================
+   CONTAINER
+   ===================================================== */
+
+.container {
+
+  width: min(
+    900px,
+    calc(100% - 40px)
+  );
+
+  margin: auto;
+
+  padding-top: 11vh;
+
+  padding-bottom: 35px;
+
+}
+
+
+/* =====================================================
+   CLOCK
+   ===================================================== */
+
+.clock-section {
+
+  text-align: center;
+
+  margin-bottom: 34px;
+
+}
+
+
+#clock {
+
+  font-size:
+    clamp(52px, 8vw, 74px);
+
+  font-weight: 500;
+
+  letter-spacing: -0.07em;
+
+  line-height: 1;
+
+  text-shadow:
+    0 4px 25px rgba(0, 0, 0, 0.35);
+
+}
+
+
+#date {
+
+  margin-top: 12px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+}
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+.search-section {
+
+  margin-bottom: 40px;
+
+}
+
+
+#searchForm {
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 13px;
+
+  background: var(--surface);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid var(--border);
+
+  border-radius: 7px;
+
+  transition: 0.15s ease;
+
+}
+
+
+#searchForm:focus-within {
+
+  border-color:
+    rgba(137, 180, 250, 0.42);
+
+  background:
+    rgba(24, 24, 37, 0.82);
+
+}
+
+
+.search-icon {
+
+  color: var(--accent);
+
+  font-size: 20px;
+
+}
+
+
+#searchInput {
+
+  flex: 1;
+
+  min-width: 0;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+}
+
+
+#searchInput::placeholder {
+
+  color: var(--muted);
+
+}
+
+
+.enter {
+
+  color: var(--muted);
+
+  font-size: 7px;
+
+  padding: 3px 5px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 4px;
+
+}
+
+
+/* =====================================================
+   BOOKMARK HEADER
+   ===================================================== */
+
+.section-header {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 12px;
+
+  color: var(--muted);
+
+  font-size: 8px;
+
+  letter-spacing: 0.15em;
+
+}
+
+
+.section-header div {
+
+  height: 1px;
+
+  flex: 1;
+
+  background: var(--border);
+
+}
+
+
+/* =====================================================
+   BOOKMARK COLUMNS
+   ===================================================== */
+
+.bookmark-columns {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 14px;
+
+}
+
+
+/* =====================================================
+   BOOKMARK GROUP
+   ===================================================== */
+
+.bookmark-group {
+
+  min-width: 0;
+
+  background:
+    rgba(24, 24, 37, 0.52);
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  border:
+
+    1px solid var(--border);
+
+  border-radius: 7px;
+
+  overflow: hidden;
+
+}
+
+
+/* =====================================================
+   GROUP TITLE
+   ===================================================== */
+
+.group-title {
+
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 10px;
+
+  color: var(--muted);
+
+  font-size: 7px;
+
+  letter-spacing: 0.10em;
+
+  border-bottom:
+    1px solid var(--border);
+
+}
+
+
+.folder-icon {
+
+  color: var(--accent);
+
+  font-family:
+    "JetBrainsMono Nerd Font",
+    "JetBrains Mono",
+    monospace;
+
+  font-size: 12px;
+
+}
+
+
+/* =====================================================
+   BOOKMARK LIST
+   ===================================================== */
+
+.bookmark-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+/* =====================================================
+   BOOKMARK
+   ===================================================== */
+
+.bookmark {
+
+  min-height: 36px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 10px;
+
+  color: var(--text);
+
+  text-decoration: none;
+
+  border-bottom:
+    1px solid var(--border);
+
+  transition:
+
+    background 0.12s ease,
+
+    padding 0.12s ease;
+
+}
+
+
+.bookmark:last-child {
+
+  border-bottom: none;
+
+}
+
+
+.bookmark:hover {
+
+  background:
+    var(--surface-hover);
+
+  padding-left: 13px;
+
+}
+
+
+/* =====================================================
+   FAVICON
+   ===================================================== */
+
+.favicon {
+
+  width: 14px;
+
+  height: 14px;
+
+  flex-shrink: 0;
+
+  object-fit: contain;
+
+  border-radius: 3px;
+
+}
+
+
+/* =====================================================
+   FALLBACK ICON
+   ===================================================== */
+
+.favicon-fallback {
+
+  width: 14px;
+
+  height: 14px;
+
+  flex-shrink: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  color: var(--accent);
+
+  font-size: 8px;
+
+}
+
+
+/* =====================================================
+   BOOKMARK NAME
+   ===================================================== */
+
+.bookmark-name {
+
+  min-width: 0;
+
+  flex: 1;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  font-size: 9px;
+
+}
+
+
+/* =====================================================
+   DOMAIN
+   ===================================================== */
+
+.bookmark-url {
+
+  max-width: 35%;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  color: var(--muted);
+
+  font-size: 7px;
+
+}
+
+
+/* =====================================================
+   FOLDER
+   ===================================================== */
+
+.bookmark-folder {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  min-height: 30px;
+
+  padding: 0 10px;
+
+  color: var(--accent);
+
+  font-size: 8px;
+
+  background:
+    rgba(137, 180, 250, 0.025);
+
+  border-bottom:
+    1px solid var(--border);
+
+}
+
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+
+.loading,
+.empty {
+
+  padding: 13px 10px;
+
+  color: var(--muted);
+
+  font-size: 8px;
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 35px;
+
+  color: var(--muted);
+
+  font-size: 7px;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  opacity: 0.55;
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .container {
+
+    width:
+      calc(100% - 22px);
+
+    padding-top: 8vh;
+
+  }
+
+
+  .bookmark-columns {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+  .bookmark-url {
+
+    display: none;
+
+  }
+
+
+  .enter {
+
+    display: none;
+
+  }
+
+
+  #clock {
+
+    font-size: 56px;
+
+  }
+
+}

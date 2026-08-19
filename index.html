@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>~/home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- LIVE WALLPAPER -->
+  <video
+  id="wallpaper"
+  class="wallpaper"
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+>
+  <source src="./wallpaper.mp4" type="video/mp4">
+</video>
+
+  <!-- DARK OVERLAY -->
+  <div class="wallpaper-overlay"></div>
+
+
+  <!-- MAIN -->
+  <main class="container">
+
+    <!-- CLOCK -->
+    <section class="clock-section">
+
+      <div id="clock">
+        00:00
+      </div>
+
+      <div id="date">
+        Loading...
+      </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <section class="search-section">
+
+      <form id="searchForm">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search DuckDuckGo..."
+          autocomplete="off"
+          autofocus
+        >
+
+        <span class="enter">
+          ENTER
+        </span>
+
+      </form>
+
+    </section>
+
+
+    <!-- BOOKMARKS -->
+    <section class="bookmarks-section">
+
+      <div class="section-header">
+        <span>BOOKMARKS</span>
+        <div></div>
+      </div>
+
+
+      <div class="bookmark-columns">
+
+        <!-- BOOKMARK BAR -->
+
+        <section class="bookmark-group">
+
+          <div class="group-title">
+            <span class="folder-icon">󰉋</span>
+            <span>BOOKMARK BAR</span>
+          </div>
+
+          <div
+            id="bookmarkBar"
+            class="bookmark-list"
+          >
+
+            <div class="loading">
+              Loading...
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- OTHER BOOKMARKS -->
+
+        <section class="bookmark-group">
+
+          <div class="group-title">
+            <span class="folder-icon">󰉋</span>
+            <span>OTHER BOOKMARKS</span>
+          </div>
+
+          <div
+            id="otherBookmarks"
+            class="bookmark-list"
+          >
+
+            <div class="loading">
+              Loading...
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <span>arch</span>
+      <span>•</span>
+      <span>sway</span>
+      <span>•</span>
+      <span>chromium</span>
+
+    </footer>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

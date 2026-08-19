@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "My Custom Homepage",
+  "version": "1.0",
+  "description": "Minimal dark Chromium homepage",
+  "permissions": [
+    "bookmarks"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
