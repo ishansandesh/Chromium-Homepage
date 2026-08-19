@@ -235,14 +235,6 @@ function createBookmark(bookmark) {
     bookmark.url;
 
 
-  link.target =
-    "_blank";
-
-
-  link.rel =
-    "noopener noreferrer";
-
-
   /*
    * Icon
    */
